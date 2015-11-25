@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   def show
     @user = User.find(params[:id])
   end
@@ -15,6 +14,19 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'new'
+    end
+  end
+  
+  def edit
+    @user =User.find(params[:id])
+  end
+  
+  def update #users/:id method=patch
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
   
