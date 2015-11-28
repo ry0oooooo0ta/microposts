@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user =User.find(params[:id])
+    @user = User.find(current_user)
   end
   
   def update #users/:id method=patch
@@ -34,6 +34,6 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :area, :profile, )
   end
 end
