@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def show
     @user = User.find(params[:id])
   end
@@ -18,15 +19,19 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(current_user)
+  @user = User.find(params[:id])
+    if @user != current_user
+    redirect_to root_path
+    end
   end
-  
+
   def update #users/:id method=patch
     @user = User.find(params[:id])
+    if @user != current_user
+    redirect_to root_path
+    end
     if @user.update(user_params)
-      redirect_to @user
-    else
-      render 'edit'
+      redirect_to root_path , notice:'Edited'
     end
   end
   
