@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
   end
   
   def new
@@ -32,6 +33,8 @@ class UsersController < ApplicationController
     end
     if @user.update(user_params)
       redirect_to root_path , notice:'Edited'
+    else
+      render'edit'
     end
   end
   
@@ -41,4 +44,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :area, :profile, )
   end
+  
 end

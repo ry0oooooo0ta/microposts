@@ -15,25 +15,8 @@ class SessionsController < ApplicationController
     end
   end
   
-  def update #users/:id method=patch
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to current_user
-    else
-      render 'edit'
-    end
-  end
-  
   def destroy
     session[:user_id] = nil
     redirect_to root_path
-  end
-  
-  def edit
-  end
-  
-  def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation, :area, :profile, )
   end
 end
