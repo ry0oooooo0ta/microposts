@@ -20,16 +20,16 @@ class UsersController < ApplicationController
   end
   
   def edit
-  @user = User.find(params[:id])
+    @user = User.find(params[:id])
     if @user != current_user
-    redirect_to root_path
+      redirect_to root_path
     end
   end
 
   def update #users/:id method=patch
     @user = User.find(params[:id])
     if @user != current_user
-    redirect_to root_path
+      redirect_to root_path
     end
     if @user.update(user_params)
       redirect_to root_path , notice:'Edited'
