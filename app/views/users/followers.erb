@@ -9,14 +9,12 @@
         <h3><%= link_to "follow" , followings_user_path %>(<%= @user.following_users.count %>)</h3>
         <h3><%= link_to "follower" , followers_user_path %>(<%= @user.follower_users.count %>)</h3>
     </section>
-  </aside>
+  </aside>  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3>follower(<%= @follow.count %>)</h3>
       <ol class="microposts">
-        <%= render @microposts %>
+        <%= render @follow %>
       </ol>
-    <% end %>
   </div>
 </div>

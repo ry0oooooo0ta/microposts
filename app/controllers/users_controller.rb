@@ -37,6 +37,21 @@ class UsersController < ApplicationController
       render'edit'
     end
   end
+
+  def followings
+    @user = User.find(params[:id])
+    @follow = @user.following_users
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @follow = @user.follower_users
+  end
+
+  def microposts
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
   
   private
   

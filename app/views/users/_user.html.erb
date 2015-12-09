@@ -1,0 +1,6 @@
+<!-- render @follow（Userモデル） 変数user(followしているUSER) -->
+<li style="height:60px">
+  <%= link_to gravatar_for(user, size: 50), user %>
+  <span class="user"><%= link_to user.name, user %></span>
+  </span>
+</li>
